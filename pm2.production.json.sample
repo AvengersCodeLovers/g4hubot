@@ -1,0 +1,20 @@
+{
+	"apps": [{
+		"name": "hubot",
+		"max_memory_restart": "1024M",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+		"script": "bin/hubot",
+		"exec_interpreter": "bash",
+		"args": "--name Hulk --adapter chatwork",
+		"watch": ["package.json", "external-scripts.json", "scripts/", "hubot-scripts.json", bin/hubot"],
+		"out_file": "/var/log/hubot/app.log",
+		"error_file": "/var/log/hubot/err.log",
+		"port": "8079",
+		"env": {
+			"HUBOT_CHATWORK_TOKEN": "",
+			"HUBOT_CHATWORK_ROOMS": "",
+			"HUBOT_CHATWORK_API_RATE": "",
+			"PORT": "8079"
+		}
+	}]
+}
