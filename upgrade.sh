@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eoux pipefail
 
 if [ ! $1 ]; then
 	echo " Example of use: source upgrade.sh production"

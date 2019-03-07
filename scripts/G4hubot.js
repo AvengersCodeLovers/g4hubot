@@ -2,7 +2,7 @@
 //   hubot flip - flip something
 
 module.exports = (robot) => {
-  robot.send("I'm here 8-)")
+  robot.messageRoom(process.env.HUBOT_CHATWORK_ROOMS, "I'm here 8-)")
 
   robot.hear(/\[To:2506790\]/i, (res) => {
     console.log(res)
