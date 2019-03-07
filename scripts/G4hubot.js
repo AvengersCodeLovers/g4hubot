@@ -17,6 +17,8 @@ module.exports = (robot) => {
   robot.respond('/upgrade/i', (res) => {
     res.send("(roger) I'll deploy myself")
     const shell = require('shelljs');
-    shell.exec('./upgrade.sh production')
-  })
+    if (shell.exec('./upgrade.sh production').code !== 0) {
+      res.send("Sorry, upgrade failed :(")
+    }
+  }
 }
