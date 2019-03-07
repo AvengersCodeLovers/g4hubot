@@ -20,5 +20,5 @@ module.exports = (robot) => {
     if (shell.exec('./upgrade.sh production').code !== 0) {
       res.send("Sorry, upgrade failed :(")
     }
-  }
+  })
 }
