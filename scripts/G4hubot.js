@@ -7,8 +7,9 @@ module.exports = (robot) => {
     res.send('Message hear.')
   });
 
-  robot.hear(/[To:2506790]/i, (res) => {
-    res.send('I can identify message that was TO to me.')
+  robot.hear(/\[To:2506790\]/i, (res) => {
+    console.log(res)
+    res.send(`[rp aid=${res.message.user.id} to=${res.message.room}-${res.message.id}] What do you want?`)
   });
 
   robot.respond(/call (.*) for me/i, (res) => {

@@ -1,5 +1,5 @@
 {
-  "name": "g4hubot",
+  "name": "Hulk",
   "version": "0.0.0",
   "private": true,
   "author": "G4CodeLovers (https://github.com/G4CodeLovers)",
@@ -8,6 +8,7 @@
     "hubot": "^3.3.0",
     "hubot-chatwork": "^0.3.0",
     "hubot-diagnostics": "^1.0.0",
+    "hubot-flip": "^2.17.1",
     "hubot-google-images": "^0.2.7",
     "hubot-google-translate": "^0.2.1",
     "hubot-help": "^1.0.1",
