@@ -345,6 +345,11 @@ hubot-redis-brain@^1.0.0:
   dependencies:
     redis "^2.7.1"
 
+hubot-respond@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/hubot-respond/-/hubot-respond-1.0.6.tgz#03737e60b33ad53515886f32dd1433f44373a3ea"
+  integrity sha1-A3N+YLM61TUViG8y3RQz9ENzo+o=
+
 hubot-rules@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hubot-rules/-/hubot-rules-1.0.0.tgz#35a5d0acd27a3fa873e796ba29f0928f2eb8398c"
