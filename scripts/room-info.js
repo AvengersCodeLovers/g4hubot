@@ -18,12 +18,19 @@ module.exports = (robot) => {
   robot.hear("[info][title][dtext:chatroom_chat_edited]", (res) => {
     let room = res.message.room
     cw.Room(room).show((err, data) => {
-      robot.brain.set(`${res.id}-info`, yaml.safeLoad(data.description))
+      robot.brain.set(`${room}-info`, yaml.safeLoad(data.description))
     })
   })
 
   robot.respond(/tell me (.*)/i, (res) => {
     let query = res.match[1]
-    res.reply(get(robot.brain.get(`${res.message.room}-info`), query))
+    let info = get(robot.brain.get(`${res.message.room}-info`), query)
+    let message = yaml.safeDump(info, {
+      'styles': {
+        '!!null': 'canonical' // dump null as ~
+      },
+      'sortKeys': true        // sort object keys
+    });
+    res.reply(message)
   })
 }
