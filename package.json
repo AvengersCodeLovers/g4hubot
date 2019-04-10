@@ -6,7 +6,7 @@
   "description": "An automation tools interacting with other chat services",
   "dependencies": {
     "hubot": "^3.3.0",
-    "hubot-chatwork": "^0.3.0",
+    "hubot-chatwork": "git://github.com/D1S1G4CodeLovers/hubot-chatwork.git",
     "hubot-diagnostics": "^1.0.0",
     "hubot-flip": "^2.17.1",
     "hubot-google-images": "^0.2.7",

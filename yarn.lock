@@ -296,10 +296,9 @@ http-errors@~1.7.0:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-hubot-chatwork@^0.3.0:
+"hubot-chatwork@git://github.com/D1S1G4CodeLovers/hubot-chatwork.git":
   version "0.3.0"
-  resolved "https://registry.yarnpkg.com/hubot-chatwork/-/hubot-chatwork-0.3.0.tgz#7b1dced55c84930271f7457e502a23c3d1c2cb3b"
-  integrity sha1-ex3O1VyEkwJx90V+UCojw9HCyzs=
+  resolved "git://github.com/D1S1G4CodeLovers/hubot-chatwork.git#17e91c8174ae3490a68b8b4a3f324ce28e9d811c"
 
 hubot-diagnostics@^1.0.0:
   version "1.0.0"
