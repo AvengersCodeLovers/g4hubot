@@ -8,6 +8,7 @@ fi
 
 if [ $1 ]; then
 	cd /var/www/hubot/current
+	git checkout -f .
         git pull origin master
 	npm install
 	export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
