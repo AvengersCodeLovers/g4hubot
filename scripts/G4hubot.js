@@ -23,4 +23,15 @@ module.exports = (robot) => {
       }
     }, 1000)
   })
+
+  robot.respond(/test script (.*) for me/i, (res) => {
+    let script = res.match[1]
+    res.send("(roger) Please wait a bit")
+    setTimeout(() => {
+      const shell = require('shelljs');
+      if (shell.exec('./test-script.sh production ' + script).code !== 0) {
+        res.send("Sorry, upgrade failed :(")
+      }
+    }, 1000)
+  })
 }
