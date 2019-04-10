@@ -34,4 +34,11 @@ module.exports = (robot) => {
       }
     }, 1000)
   })
+
+  robot.respond(/add env (\w*) (.*)/i, (res) => {
+    let name = res.match[1]
+    let value = res.match[2]
+    process.env[name] = value;
+    res.send(`(roger) Env added with ${name} and ${value}`)
+  })
 }
