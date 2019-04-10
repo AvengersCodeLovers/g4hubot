@@ -155,60 +155,37 @@ Where `<adapter>` is the name of your adapter without the `hubot-` prefix.
 
 [hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
 
+### Chatwork
+
+The bot is bundled with a adapter for **chatwork**. To run with chatwork, the 
+only requirements are a `HUBOT_CHATWORK_TOKEN` which is chatwork's api key 
+and `HUBOT_CHATWORK_ROOMS` which is rooms' id. The bot must be added to 
+those rooms beforehand.
+
+Another available variable is `HUBOT_CHATWORK_API_RATE` which specifies the 
+polling rate of the bot. Chatwork api has a limit of 300 request in 5 minutes, 
+so the polling rate should be lower than that.
+
+To run the bot with chatwork in local environment
+
+    % g4hubot -a chatwork
+
+Necessary environment variables must be set beforehand. Please check 
+`pm2.production.json.sample` for possible variables.
+
 ## Deployment
 
-    % heroku create --stack cedar
-    % git push heroku master
+### Deploying to staging server
 
-If your Heroku account has been verified you can run the following to enable
-and add the Redis to Go addon to your app.
+In staging server, the bot is deployed by `deploy` user.
+After, login to staging server:
 
-    % heroku addons:add redistogo:nano
+    % su - deploy
 
-If you run into any problems, checkout Heroku's [docs][heroku-node-docs].
+The bot is managed by [pm2](http://pm2.keymetrics.io/). Some common commands:
 
-You'll need to edit the `Procfile` to set the name of your hubot.
+    % pm2 start hubot
+    % pm2 restart hubot
+    % pm2 monit hubot
 
-More detailed documentation can be found on the [deploying hubot onto
-Heroku][deploy-heroku] wiki page.
-
-### Deploying to UNIX or Windows
-
-If you would like to deploy to either a UNIX operating system or Windows.
-Please check out the [deploying hubot onto UNIX][deploy-unix] and [deploying
-hubot onto Windows][deploy-windows] wiki pages.
-
-[heroku-node-docs]: http://devcenter.heroku.com/articles/node-js
-[deploy-heroku]: https://github.com/github/hubot/blob/master/docs/deploying/heroku.md
-[deploy-unix]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
-[deploy-windows]: https://github.com/github/hubot/blob/master/docs/deploying/windows.md
-
-## Campfire Variables
-
-If you are using the Campfire adapter you will need to set some environment
-variables. If not, refer to your adapter documentation for how to configure it,
-links to the adapters can be found on [Hubot Adapters][hubot-adapters].
-
-Create a separate Campfire user for your bot and get their token from the web
-UI.
-
-    % heroku config:add HUBOT_CAMPFIRE_TOKEN="..."
-
-Get the numeric IDs of the rooms you want the bot to join, comma delimited. If
-you want the bot to connect to `https://mysubdomain.campfirenow.com/room/42`
-and `https://mysubdomain.campfirenow.com/room/1024` then you'd add it like
-this:
-
-    % heroku config:add HUBOT_CAMPFIRE_ROOMS="42,1024"
-
-Add the subdomain hubot should connect to. If you web URL looks like
-`http://mysubdomain.campfirenow.com` then you'd add it like this:
-
-    % heroku config:add HUBOT_CAMPFIRE_ACCOUNT="mysubdomain"
-
-[hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
-
-## Restart the bot
-
-You may want to get comfortable with `heroku logs` and `heroku restart` if
-you're having issues.
+To config the bot, please se `pm2.production.json.sample` for available variables.
