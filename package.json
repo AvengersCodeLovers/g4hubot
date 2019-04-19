@@ -5,8 +5,8 @@
   "author": "G4CodeLovers (https://github.com/G4CodeLovers)",
   "description": "An automation tools interacting with other chat services",
   "dependencies": {
-    "hubot": "^3.3.0",
-    "hubot-chatwork": "^0.3.0",
+    "hubot": "^3.3.2",
+    "hubot-chatwork": "github:D1S1G4CodeLovers/hubot-chatwork#master",
     "hubot-diagnostics": "^1.0.0",
     "hubot-flip": "^2.17.1",
     "hubot-google-images": "^0.2.7",
@@ -19,7 +19,7 @@
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "js-yaml": "^3.12.2",
+    "js-yaml": "^3.13.1",
     "lodash.get": "^4.4.2",
     "shelljs": "^0.8.3"
   },
