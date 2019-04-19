@@ -23,4 +23,22 @@ module.exports = (robot) => {
       }
     }, 1000)
   })
+
+  robot.respond(/test script (.*) for me/i, (res) => {
+    let script = res.match[1]
+    res.send("(roger) Please wait a bit")
+    setTimeout(() => {
+      const shell = require('shelljs');
+      if (shell.exec('./test-script.sh production ' + script).code !== 0) {
+        res.send("Sorry, upgrade failed :(")
+      }
+    }, 1000)
+  })
+
+  robot.respond(/add env (\w*) (.*)/i, (res) => {
+    let name = res.match[1]
+    let value = res.match[2]
+    process.env[name] = value;
+    res.send(`(roger) Env added with ${name} and ${value}`)
+  })
 }
