@@ -1,11 +1,16 @@
 // Commands:
 //   hubot flip - flip something
 
+require('dotenv').config()
+
+var yourlsService = require('./services/YourlsService.js')
+var helperService = require('./services/HelperService.js')
+
 module.exports = (robot) => {
+
   robot.messageRoom(process.env.HUBOT_CHATWORK_ROOMS, `I'm here 8-).\nMy name is ${process.env.HUBOT_NAME}`)
 
-  robot.hear(/\[To:2506790\]/i, (res) => {
-    console.log(res)
+  robot.hear(/\[To:/+process.env.HUBOT_CHATWORK_ID+/\]/i, (res) => {
     res.reply("What do you want?")
   })
 
@@ -40,5 +45,31 @@ module.exports = (robot) => {
     let value = res.match[2]
     process.env[name] = value;
     res.send(`(roger) Env added with ${name} and ${value}`)
+  })
+
+  robot.respond(/shorten url (.*)/i, (res) => {
+    let url =  res.match[1]
+
+    if (helperService.validLink(url)) {
+      yourlsService.shortenLink(robot, url)((error, response, body) => {
+        try {
+          var data = JSON.parse(body)
+
+          switch (data.status) {
+            case 'fail':
+              res.reply(url + " already exists!\nYourl url is:" + data.shorturl)
+              break
+            case 'success':
+              res.reply("Your shorten url is: " + data.shorturl)
+              break
+          }
+        }
+        catch (error) {
+          res.reply("Have something wrong!")
+        }
+      })
+    } else {
+      res.reply("Your url is wrong format!")
+    }
   })
 }
