@@ -24,13 +24,26 @@ module.exports = (robot) => {
 
   robot.respond(/tell me (.*)/i, (res) => {
     let query = res.match[1]
-    let info = get(robot.brain.get(`${res.message.room}-info`), query)
-    let message = yaml.safeDump(info, {
-      'styles': {
-        '!!null': 'canonical' // dump null as ~
-      },
-      'sortKeys': true        // sort object keys
-    });
-    res.reply(message)
+    let message = "I don't know anything!"
+    let room_info = robot.brain.get(`${res.message.room}-info`)
+
+    if (typeof room_info !== 'undefined' && typeof room_info !== 'object') {
+      message = "Room infomation is: " + room_info
+    }
+
+    if (typeof room_info === 'object' ) {
+      let info = get(room_info, query)
+
+      if (typeof info !== 'undefined') {
+        message = yaml.safeDump(info, {
+          'styles': {
+            '!!null': 'canonical' // dump null as ~
+          },
+          'sortKeys': true        // sort object keys
+        });
+      }
+
+      res.reply(message)
+    }
   })
 }
